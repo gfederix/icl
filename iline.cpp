@@ -1,3 +1,9 @@
+/*
+ * Simple UNIX interactive commandlie  C++ lib.
+ * Copyright  (c) 2017 Fyodor Goncharov.
+ *
+ */
+
 #include "iline.hpp"
 //using namespace std;
 namespace icl {
