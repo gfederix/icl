@@ -30,7 +30,7 @@ char* ReadLine::getchar(){
   return  buf;
 }
 
-bool ReadLine::escape(){
+bool ReadLine::escape() {
   if ( getc() != '\e') {
     ungetc();
     return false;
