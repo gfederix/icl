@@ -3,19 +3,17 @@
  * Copyright  (c) 2017 Fyodor Goncharov.
  *
  */
-
+#include <cstring>
+#include <iostream>
 #include "iline.hpp"
 //using namespace std;
 namespace icl {
 
 ReadLine::ReadLine() {
-  tcgetattr(STDIN_FILENO,  &oldTermios);
-  cfmakeraw(&rawTermios);
-  tcsetattr(STDIN_FILENO, TCSANOW, &rawTermios);
+  term.raw();
 }
 
 ReadLine::~ReadLine() {
-  tcsetattr(STDIN_FILENO, TCSANOW, &oldTermios);
 };
 
 char* ReadLine::getchar(){
@@ -74,3 +72,4 @@ void ReadLine::csi() {
 }
 
 }
+
