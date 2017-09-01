@@ -35,7 +35,6 @@ msg read_u8() {
   ungetc(c);
   // UTF8 8-bit char length
   int u8bit_num =  (c >> 5 == 0b110 ? (c >> 4 == 0b1110 ? (c >> 3 == 0b11110? 4 : 3) : 2) : 1) + 1 /* '\0' char */;
-  std::cout << u8bit_num;
   auto buf = std::make_unique< char[] >(u8bit_num);
   fgets(buf.get(), u8bit_num, stdin);
   return  buf.get();
