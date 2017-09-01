@@ -13,17 +13,21 @@ struct msg {
   enum msg_types {
     alpha,
     escape,
+    control,
+    special,
+  };
+  template <typename charT>
+  msg(charT val,  msg_types type = alpha): type{type}, value(val) {
   };
   msg_types type;
   std::basic_string<char> value;
-  msg(const char* val,  msg_types type = alpha): type{type}, value(val) {
-  };
-
 };
 
-template <typename T>
-T wait_char();
-
+msg wait_msg();
 msg read_u8();
-template  < typename T, int max_esc_seq_len = 10 > 
+template  < int max_esc_seq_len  = 10>
 msg read_escape();
+
+class not_escape: public std::exception {
+
+};
