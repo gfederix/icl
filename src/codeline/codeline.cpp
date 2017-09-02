@@ -1,5 +1,5 @@
-#include "codeline.hpp"
-#include "util.hpp"
+#include "codeline/codeline.hpp"
+#include "terminal/util.hpp"
 #include <numeric>
 
 using namespace cli;

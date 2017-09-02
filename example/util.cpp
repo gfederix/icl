@@ -1,6 +1,7 @@
-#include "util.hpp"
-#include "terminal.hpp"
+#include "terminal/util.hpp"
+#include "terminal/terminal.hpp"
 #include <iostream>
+
 int main(){
   Terminal term;
   term.raw();

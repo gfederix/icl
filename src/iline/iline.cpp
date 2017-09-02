@@ -6,9 +6,8 @@
 #include <cstring>
 #include <iostream>
 #include "iline.hpp"
-//using namespace std;
-namespace icl {
-
+using namespace icl;
+//namespace icl {
 ReadLine::ReadLine() {
   term.raw();
 }
@@ -71,5 +70,4 @@ void ReadLine::csi() {
   std::cout << " CSI: ";
 }
 
-}
 

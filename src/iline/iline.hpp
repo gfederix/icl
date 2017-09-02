@@ -1,7 +1,7 @@
 #include <unordered_map>
 #include <functional>
 #include <string>
-#include "terminal.hpp"
+#include "terminal/terminal.hpp"
 
 constexpr int esc_max_len = 10;
 

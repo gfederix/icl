@@ -1,4 +1,4 @@
-#include "terminal.hpp"
+#include "terminal/terminal.hpp"
 #include <string>
 #include <vector>
 
@@ -49,4 +49,4 @@ public:
   }
 
 };
-} // namespace cli
+} // end namespace cli
