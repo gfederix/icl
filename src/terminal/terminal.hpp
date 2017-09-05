@@ -2,7 +2,7 @@
 #include <sys/ioctl.h>
 #include <string>
 #include <memory>
-
+#include <vector>
 class Terminal {
 private:
   termios oldTermios;
@@ -19,7 +19,7 @@ public:
   unsigned short cols() {
     return wsz.ws_row;
   }
-  int get() {
+  int_type get() {
     return std::getc(stdin);
   }
   Terminal& putback( char ch) {
@@ -31,10 +31,11 @@ public:
     putback(ch);
     return ch;
   }
-  Terminal& read(char_type* s, std::streamsize count) {
-    while (count) {
-      s[--count] = std::getc(stdin);
-    };
+  template < typename CharCountainerIterator>
+  Terminal& read(CharCountainerIterator s, std::streamsize count){
+    while (count --) {
+      *(s ++) = std::getc(stdin);
+    }
     return *this;
   }
   void raw();
