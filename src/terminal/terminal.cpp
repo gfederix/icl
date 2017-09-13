@@ -1,6 +1,5 @@
 #include "terminal.hpp"
 #include <unistd.h>
-
 Terminal::Terminal(){
   ioctl(STDIN_FILENO, TIOCGWINSZ, &wsz);
   tcgetattr(STDIN_FILENO,  &oldTermios);

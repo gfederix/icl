@@ -12,7 +12,7 @@ msg wait_msg() {
   unsigned char c = getc();
   switch (c) {
   default:
-    if ( '\0' < c  && c < ' '){
+    if ( '\0' < c  && c < ' ') {
       if( c == '\e'){
         ungetc(c);
         return read_escape();
@@ -43,7 +43,7 @@ msg read_u8() {
 template  < int max_esc_seq_len > 
 msg read_escape() {
   unsigned char esc[max_esc_seq_len  + /* '\0' */  1 ];
-    if ( (esc[0] = getc()) != '\e') {
+  if ( (esc[0] = getc()) != '\e') {
       // ungetc(esc[0]);
       esc[1] = '\0';
       throw not_escape(/*reinterpret_cast<char*> (esc)*/);
