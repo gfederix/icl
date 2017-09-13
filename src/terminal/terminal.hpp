@@ -1,8 +1,12 @@
+#ifndef TERMINAL_HPP
+#define TERMINAL_HPP
 #include <termios.h>
 #include <sys/ioctl.h>
 #include <string>
 #include <memory>
 #include <vector>
+#include "ascii_control.hpp"
+
 class Terminal {
 private:
   termios oldTermios;
@@ -31,8 +35,8 @@ public:
     putback(ch);
     return ch;
   }
-  template < typename CharCountainerIterator>
-  Terminal& read(CharCountainerIterator s, std::streamsize count){
+  template < typename CharPtrOrIter>
+  Terminal& read(CharPtrOrIter s, std::size_t count){
     while (count --) {
       *(s ++) = std::getc(stdin);
     }
@@ -42,3 +46,7 @@ public:
 };
 
 const  Terminal& operator<<(const Terminal& term, const std::string& str);
+void read_escape( Terminal& term, ascii_control& esc);
+Terminal& operator>> (Terminal& term, ascii_control& ctrl);
+
+#endif
